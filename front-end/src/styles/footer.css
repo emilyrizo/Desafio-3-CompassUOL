@@ -1,0 +1,125 @@
+footer {
+  display: flex;
+  margin-top: -9rem;
+  margin-bottom: 4rem;
+  justify-content: center;
+}
+
+.footer-container {
+  display: grid;
+  margin: 14rem 0 5rem 0;
+  gap: 11.35rem;
+  grid-template-columns: 30rem 7rem 14.2rem 30rem;
+}
+
+.logo-footer {
+  color: #000;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 3.6rem;
+}
+
+.subtitle-footer {
+  margin-top: 5.5rem;
+}
+
+.footer-content p {
+  color: #9F9F9F;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+}
+
+.footer-section h3 {
+  color: #9F9F9F;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2.4rem;
+  margin-top: .9rem;
+}
+
+.inner-ul {
+  margin-top: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4.6rem;
+}
+
+.inner-ul li {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 500;
+}
+
+.divider-footer {
+  display: flex;
+  border: solid #D9D9D9;
+  width: 124rem;
+  border-width: 0.01rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-copyright span {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+}
+
+.news-footer form {
+  margin-top: 5.5rem;
+}
+
+#email {
+  width: 20rem;
+  margin-right: 1rem;
+  border-bottom: .1rem solid #000;
+}
+
+#email::placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.1rem;
+  color: #9F9F9F;
+}
+
+
+/*label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="email"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+
+/* .footer-content {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.link-footer {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.help-footer {
+  grid-column: 3/ 4;
+  grid-row: 1 / 2;
+}
+
+.news-footer {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+} */

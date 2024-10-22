@@ -37,8 +37,19 @@ export class ProductService {
     if (!productExists) {
       throw new NotFoundException(`Product with id ${id} not found`);
     }
-
-    return this.prisma.product.update({ where: { id }, data });
+  
+    const updateData: Prisma.ProductUpdateInput = { ...data };
+  
+    if (typeof data.is_new === 'boolean' || data.is_new === null) {
+      updateData.is_new = data.is_new;
+    } else {
+      delete updateData.is_new;
+    }
+  
+    return this.prisma.product.update({
+      where: { id },
+      data: updateData,
+    });
   }
 
   async delete(id: number) {

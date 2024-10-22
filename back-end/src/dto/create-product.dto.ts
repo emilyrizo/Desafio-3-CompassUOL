@@ -13,9 +13,9 @@ export class CreateProductDto {
   @IsNumber()
   category_id: number;
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
-  description?: string;
+  description: string;
 
   @IsNotEmpty()
   @IsString()
@@ -33,9 +33,9 @@ export class CreateProductDto {
   @IsNumber()
   discount_percent?: number;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsBoolean()
-  is_new: boolean;
+  is_new?: boolean;
 
   @IsNotEmpty()
   @IsString()

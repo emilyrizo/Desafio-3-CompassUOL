@@ -1,0 +1,33 @@
+.browser-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 10.7rem;
+  flex-direction: column;
+}
+
+.browser-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+.menu-list-browser {
+  margin: 9.1rem 0 5.6rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.menu-list-browser img {
+  border-radius: 1rem;
+  width: 38.1rem;
+  height: auto;
+  margin-bottom: 3rem;
+}
+
+.menu-list-browser h2 {
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 3.6rem;
+  text-align: center;
+}

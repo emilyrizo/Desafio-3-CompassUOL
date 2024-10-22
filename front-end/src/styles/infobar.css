@@ -1,0 +1,32 @@
+.infobar-container {
+  background-color: #FAF3EA;
+}
+
+.infobar-list {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10rem 0;
+}
+
+.infobar-list li {
+  display: flex;
+}
+
+.infobar-list li img {
+  height: 6rem;
+  padding-right: 1.36rem;
+}
+
+.infobar-list h3 {
+  font-size: 2.5rem;
+  line-height: 3.75rem;
+  font-weight: 600;
+  color: #242424;
+}
+
+.infobar-list p {
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: 500;
+  color: #898989;
+}
