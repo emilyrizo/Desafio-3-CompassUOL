@@ -65,7 +65,7 @@ const FilterMenu = ({ setItemsPerPage }: FilterMenuProps) => {
             alt="Filter" 
             className="filter-icon-img" 
           />
-          <span>{selectedCategory}</span> {/* Mostra a categoria selecionada */}
+          <span>{selectedCategory}</span>
           {openDropdown === 'category' && (
             <div className="checkbox-dropdown">
               {categories.map(category => (
