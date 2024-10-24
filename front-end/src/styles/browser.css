@@ -5,6 +5,8 @@
   position: relative;
   top: 10.7rem;
   flex-direction: column;
+  padding-bottom: 5.6rem;
+  margin-bottom: 5.6rem;
 }
 
 .browser-title {

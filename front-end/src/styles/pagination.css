@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  gap: 3.8rem;
+  margin-top: 7rem;
+}
+
+.pagination button {
+  font-family: "Poppins", sans-serif;
+  line-height: 3rem;
+  font-weight: 400;
+  font-size: 2rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 1rem;
+  background-color: #F9F1E7;
+  cursor: pointer;
+  /* padding: 8px 12px; */
+}
+
+.pagination button.active {
+  background-color: #B88E2F;
+  color: white;
+}
+
+.pagination .next-button {
+  color: #000;
+  width: 9.8rem;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+}
+

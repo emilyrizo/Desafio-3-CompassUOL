@@ -1,0 +1,47 @@
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  padding: 1.3rem;
+  border: none;
+  cursor: pointer;  
+  font-family: "Poppins", sans-serif;
+  line-height: 3rem;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  box-shadow: .2rem .2rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.checkbox-dropdown {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #F9F1E7; /* Cor de fundo do dropdown */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: absolute; /* Para posicionamento */
+  z-index: 10; /* Para que fique acima de outros elementos */
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  margin-right: 0.5rem; /* Espaçamento entre o checkbox e o texto */
+}
+

@@ -1,7 +1,7 @@
 import '../../styles/banner.css';
 import banner from '../../assets/images/banner/banner.png';
 
-const Banner = () => {
+const MainHome = () => {
   return (
     <div>
       <img className='banner' src={banner} alt="" />
@@ -9,4 +9,4 @@ const Banner = () => {
   )
 }
 
-export default Banner
+export default MainHome

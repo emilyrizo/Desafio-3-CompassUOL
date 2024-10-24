@@ -1,4 +1,5 @@
 import '../../styles/footer.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -14,25 +15,25 @@ const Footer = () => {
           <div className="footer-section link-footer">
             <h3>Links</h3>
             <ul className="inner-ul">
-              <li>Home</li>
-              <li>Shop</li>
-              <li>About</li>
-              <li>Contact</li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/shop">Shop</Link></li>
+              <li><Link to="#">About</Link></li>
+              <li><Link to="#">Contact</Link></li>
             </ul>
           </div>
       
           <div className="footer-section help-footer">
             <h3>Help</h3>
             <ul className="inner-ul">
-              <li>Payment Options</li>
-              <li>Returns</li>
-              <li>Privacy Policies</li>
+              <li><Link to="#">Payment Options</Link></li>
+              <li><Link to="#">Returns</Link></li>
+              <li><Link to="#">Privacy Policies</Link></li>
             </ul>
           </div>
       
           <div className="footer-section news-footer">
             <h3>Newsletter</h3>
-            <form action="" method="post">
+            <form id='form-news' action="" method="post">
               <label className='email-input' htmlFor='email'>
                 <input type="email" id="email" name="email" placeholder="Enter Your Email Address" required />
               </label>

@@ -65,14 +65,20 @@ footer {
   line-height: 2.4rem;
 }
 
-.news-footer form {
-  margin-top: 5.5rem;
+#form-news {
+  margin-top: 5rem;
 }
 
 #email {
   width: 20rem;
   margin-right: 1rem;
   border-bottom: .1rem solid #000;
+  padding: .4rem 0 .3rem 0;
+}
+
+.email-input input:focus {
+  outline: none;
+  border: none;
 }
 
 #email::placeholder {
@@ -83,43 +89,10 @@ footer {
   color: #9F9F9F;
 }
 
-
-/*label {
-  display: block;
-  margin-bottom: 10px;
+#form-news button {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.1rem;
+  border-bottom: .1rem solid #000;
 }
-
-input[type="email"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-} */
-
-/* .footer-content {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-
-.link-footer {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-}
-
-.help-footer {
-  grid-column: 3/ 4;
-  grid-row: 1 / 2;
-}
-
-.news-footer {
-  grid-column: 4 / 5;
-  grid-row: 1 / 2;
-} */

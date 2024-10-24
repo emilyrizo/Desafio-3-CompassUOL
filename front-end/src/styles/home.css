@@ -1,0 +1,20 @@
+.product-title {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 4.8rem;
+  margin-bottom: 3.2rem;
+}
+
+.show-more-products-bt {
+  text-align: center;
+  margin: 4.4rem auto 7rem auto;
+  width: 24.5rem;
+  border: .2rem solid #B88E2F;
+  color: #B88E2F;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 600;
+  padding: 1.2rem 0;
+  display: block;
+}
