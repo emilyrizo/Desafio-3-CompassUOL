@@ -14,7 +14,6 @@ const Shop = () => {
       <BannerShop />
       <FilterMenu />
       <Products/>
-
       <InfoBar />
       <Footer />        
     </div>
