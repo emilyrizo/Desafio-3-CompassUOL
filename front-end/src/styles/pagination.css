@@ -1,7 +1,8 @@
 .pagination {
   display: flex;
   gap: 3.8rem;
-  margin-top: 7rem;
+  margin: 7rem auto 8.5rem;
+  justify-content: center;
 }
 
 .pagination button {

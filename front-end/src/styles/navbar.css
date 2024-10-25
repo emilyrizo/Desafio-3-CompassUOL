@@ -1,4 +1,6 @@
 nav {
+  margin: 0 auto;
+  max-width: 144rem;
   display: flex;
 }
 

@@ -1,3 +1,8 @@
-.banner, .banner-shop {
+.banner-home, .banner-shop{
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
+.banner-home-img, .banner-shop-img {
   width: 100%;
 }

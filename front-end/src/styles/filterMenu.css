@@ -1,10 +1,11 @@
 .filter-menu-container {
+  max-width: 144rem;
   background-color: #F9F1E7;
-  margin-top: -1.2rem;
+  margin: -1.2rem auto 0;
   display: flex;
   align-items: center;
   justify-content: center;  
-  margin-bottom: 2rem;
+  margin-bottom: 6.3rem;
 }
 
 .filter-menu {
@@ -52,7 +53,7 @@
 .filter-sidebar {
   height: 3.7rem;
   border-left: .2rem solid #9F9F9F;
-  padding-left: 3rem;
+  padding-left: 3.4rem;
   align-items: center;
   display: flex;
 }
