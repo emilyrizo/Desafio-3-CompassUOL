@@ -17,9 +17,9 @@
 .product-card {
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease;
   width: 28.5rem;
   background-color: #F4F5F7;
+  transition: transform 0.3s ease;
 }
 
 .product-card:hover {
@@ -104,10 +104,6 @@
   
 }
 
-.product-image-wrapper {
-  position: relative;
-}
-
 .product-image {
   width: 100%;
   height: auto;
@@ -168,10 +164,11 @@
   transition: color 0.3s ease;
 }
 
+.product-option:hover {
+  color: #ddd;
+}
+
 .product-option img {
   padding-right: .4rem;
 }
 
-.product-option:hover {
-  color: #ddd;
-}
