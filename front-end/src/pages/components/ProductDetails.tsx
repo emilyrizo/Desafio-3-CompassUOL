@@ -32,23 +32,31 @@ interface Category {
 }
 
 const ProductDetails = () => {
-  const { id } = useParams<{ id: string }>(); // Obtém o ID da URL
+  const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
-  const [category, setCategory] = useState<Category | null>(null); // Estado para a categoria
+  const [category, setCategory] = useState<Category | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const [count, setCount] = useState<number>(1);
+  
+  const increase = () => setCount(count + 1);
+  
+  const decrease = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+
   useEffect(() => {
-    // Busca o produto pelo ID
     axiosInstance.get(`/products/${id}`)
       .then((response) => {
         const productData = response.data;
         setProduct(productData);
 
-        // Busca a categoria usando category_id do produto
         return axiosInstance.get(`/categories/${productData.category_id}`);
       })
       .then((categoryResponse) => {
-        setCategory(categoryResponse.data); // Salva a categoria
+        setCategory(categoryResponse.data); 
         setLoading(false);
       })
       .catch((error) => {
@@ -80,13 +88,29 @@ const ProductDetails = () => {
       <div className='product-info-container'>
         <div className="product-info">
           <ol className='product-info-imgs'>
-            <li className='mini-img'><img src={product.image_link} alt={product.name} /></li>
-            <li className='mini-img'><img src={product.image_link} alt={product.name} /></li>
-            <li className='mini-img'><img src={product.image_link} alt={product.name} /></li>
-            <li className='mini-img'><img src={product.image_link} alt={product.name} /></li>
-            <li className='main-img'><img src={product.image_link} alt={product.name} /></li>
+            <div className='mini-images-column'>
+              <li className='mini-img-li'>
+                <img className="product-image-mini" src={product.image_link} alt={product.name} />
+              </li>
+              <li className='mini-img-li'>
+                <img className="product-image-mini" src={product.image_link} alt={product.name} />
+              </li>
+              <li className='mini-img-li'>
+                <img className="product-image-mini" src={product.image_link} alt={product.name} />
+              </li>
+              <li className='mini-img-li'>
+                <img className="product-image-mini" src={product.image_link} alt={product.name} />
+              </li>
+            </div>
+            <div className='main-image-column'>
+              <li className='img-li'>
+                <img className="product-image" src={product.image_link} alt={product.name} />
+                {product.is_new && <span className="tag-new">New</span>}
+                {product.discount_price && <span className="tag-discount">{`${product.discount_percent}%`}</span>}
+              </li>
+            </div>
           </ol>
-
+         
           <div className="product-info-content">
             <h1 className='prod-name'>{product.name}</h1>
           
@@ -107,44 +131,68 @@ const ProductDetails = () => {
               )}
             </div>
 
-            <div>
-              <img src={stars} alt="Rating" />
+            <div className='rating'>
+              <div className='rating-img'>
+                <img src={stars} alt="Rating" />
+              </div>
               <p className='review'>5 Customer Review</p>
             </div>
 
             <p className='large-description'>{product.large_description}</p>
 
             <div>
-              <p className='menu-size'>Size</p>
-              <ol>
+              <p className='title-menu-size'>Size</p>
+              <ol className='menu-size'>
                 <li>L</li>
                 <li>XL</li>
                 <li>XS</li>
               </ol>
 
-              <p className='menu-color'>Color</p>
-              <ol>
-                <li></li>
-                <li></li>
-                <li></li>
+              <p className='title-menu-color'>Color</p>
+              <ol className='menu-color'>
+                <li className='color-purple'></li>
+                <li className='color-black'></li>
+                <li className='color-gold'></li>
               </ol>
             </div>
 
             <div className='info-bts'>
-              <span>contador</span>
-              <button>Add To Cart</button>
-              <button>+ Compare</button>
+
+              <div className="counter">
+                <button className="decrease" onClick={decrease}>-</button>
+                <span id="counter-value">{count}</span>
+                <button className="increase" onClick={increase}>+</button>
+              </div>
+
+              <button className='add-to-cart-bt'>Add To Cart</button>
+              <button className='compare'>+ Compare</button>
             </div>
 
             <div className="sku-category-tags">
-              <ol>
-                <li>SKU<span>:</span>{product.sku}</li>
-                <li>Category<span>:</span>{category ? category.name : 'Carregando...'}</li>
-                <li>Tags<span>:</span>Sofa, Chair, Home, Shop</li>
-                <li>Share<span>:</span>
-                  <img src={fb} alt="Facebook" />
-                  <img src={linkedin} alt="LinkedIn" />  
-                  <img src={twitter} alt="Twitter" />
+              <ol className="details-grid">
+                <li>
+                  <span className="detail-name">SKU</span>
+                  <span className="colon">:</span>
+                  <span>{product.sku}</span>
+                </li>
+                <li>
+                  <span className="detail-name">Category</span>
+                  <span className="colon">:</span>
+                  <span>{category ? category.name : 'Carregando...'}</span>
+                </li>
+                <li>
+                  <span className="detail-name">Tags</span>
+                  <span className="colon">:</span>
+                  <span>Sofa, Chair, Home, Shop</span>
+                </li>
+                <li>
+                  <span className="detail-name">Share</span>
+                  <span className="colon">:</span>
+                  <span className="social-icons">
+                    <img src={fb} alt="Facebook" />
+                    <img src={linkedin} alt="LinkedIn" />
+                    <img src={twitter} alt="Twitter" />
+                  </span>
                 </li>
               </ol>
             </div> 
