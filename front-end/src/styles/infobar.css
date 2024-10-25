@@ -1,4 +1,6 @@
 .infobar-container {
+  max-width: 144rem;
+  margin: 0 auto;
   background-color: #FAF3EA;
 }
 

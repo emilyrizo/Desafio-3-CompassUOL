@@ -1,10 +1,10 @@
 import '../../styles/navbar.css';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/images/navbar/logo-Furniro.png';
 import login from '../../assets/images/navbar/login.svg';
 import search from '../../assets/images/navbar/search.svg';
 import favorites from '../../assets/images/navbar/heart.svg';
 import cart from '../../assets/images/navbar/cart.svg';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
