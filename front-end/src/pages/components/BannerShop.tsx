@@ -3,7 +3,9 @@ import '../../styles/banner.css';
 
 const BannerShop = () => {
   return (
-    <img className='banner-shop' src={bannershop} alt="" />
+    <div className='banner-shop'>
+      <img className='banner-shop-img' src={bannershop} alt="" />
+    </div>
   )
 }
 

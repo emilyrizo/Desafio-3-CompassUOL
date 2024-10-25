@@ -1,8 +1,14 @@
 footer {
+  max-width: 144rem;
   display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.footer {
   margin-top: -9rem;
   margin-bottom: 4rem;
-  justify-content: center;
+
 }
 
 .footer-container {
