@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import '../../styles/CustomDropdown.css';
+import '../../styles/customDropdown.css';
 
 interface CustomDropdownProps {
   listOptions: string[];
