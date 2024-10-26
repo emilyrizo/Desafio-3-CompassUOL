@@ -8,10 +8,9 @@ import Footer from "./components/Footer";
 import { Link } from "react-router-dom";
 import "../styles/home.css";
 
-  
 const Home = () => {
-  const [itemsPerPage] = useState<string>('16');
-  
+  const [itemsPerPage] = useState<number>(16);
+
   return (
     <div className="home-container">
       <Navbar />
@@ -19,7 +18,7 @@ const Home = () => {
       <Browser />
       <div className="our-products">
         <h1 className="product-title">Our Products</h1>
-        <ProductList itemsPerPage={itemsPerPage}/>
+        <ProductList itemsPerPage={itemsPerPage} />
         <Link className="show-more-products-bt" to="/shop">
           Show More
         </Link>

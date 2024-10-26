@@ -36,11 +36,11 @@ const ProductDetails = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [category, setCategory] = useState<Category | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-
   const [count, setCount] = useState<number>(1);
-  
+  const [mainImage, setMainImage] = useState<string>('');
+
   const increase = () => setCount(count + 1);
-  
+
   const decrease = () => {
     if (count > 1) {
       setCount(count - 1);
@@ -52,11 +52,11 @@ const ProductDetails = () => {
       .then((response) => {
         const productData = response.data;
         setProduct(productData);
-
+        setMainImage(productData.image_link);
         return axiosInstance.get(`/categories/${productData.category_id}`);
       })
       .then((categoryResponse) => {
-        setCategory(categoryResponse.data); 
+        setCategory(categoryResponse.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -73,6 +73,8 @@ const ProductDetails = () => {
     return <div>Produto não encontrado.</div>;
   }
 
+  const otherImages = product.other_images_link ? product.other_images_link.split(',') : [];
+
   return (
     <div className="product-details-container">
       <div className='product-details'>
@@ -84,36 +86,29 @@ const ProductDetails = () => {
           </ol>
         </div>
       </div>
-
       <div className='product-info-container'>
         <div className="product-info">
           <ol className='product-info-imgs'>
             <div className='mini-images-column'>
-              <li className='mini-img-li'>
+              <li className='mini-img-li' onClick={() => setMainImage(product.image_link)}>
                 <img className="product-image-mini" src={product.image_link} alt={product.name} />
               </li>
-              <li className='mini-img-li'>
-                <img className="product-image-mini" src={product.image_link} alt={product.name} />
-              </li>
-              <li className='mini-img-li'>
-                <img className="product-image-mini" src={product.image_link} alt={product.name} />
-              </li>
-              <li className='mini-img-li'>
-                <img className="product-image-mini" src={product.image_link} alt={product.name} />
-              </li>
+              {otherImages.map((img, index) => (
+                <li key={index} className='mini-img-li' onClick={() => setMainImage(img.trim())}>
+                  <img className="product-image-mini" src={img.trim()} alt={product.name} />
+                </li>
+              ))}
             </div>
             <div className='main-image-column'>
               <li className='img-li'>
-                <img className="product-image" src={product.image_link} alt={product.name} />
+                <img className="prod-img-details" src={mainImage} alt={product.name} />
                 {product.is_new && <span className="tag-new">New</span>}
                 {product.discount_price && <span className="tag-discount">{`${product.discount_percent}%`}</span>}
               </li>
             </div>
           </ol>
-         
           <div className="product-info-content">
             <h1 className='prod-name'>{product.name}</h1>
-          
             <div className="product-pricing">
               {product.discount_price ? (
                 <>
@@ -130,16 +125,13 @@ const ProductDetails = () => {
                 </span>
               )}
             </div>
-
             <div className='rating'>
               <div className='rating-img'>
                 <img src={stars} alt="Rating" />
               </div>
               <p className='review'>5 Customer Review</p>
             </div>
-
             <p className='large-description'>{product.large_description}</p>
-
             <div>
               <p className='title-menu-size'>Size</p>
               <ol className='menu-size'>
@@ -147,7 +139,6 @@ const ProductDetails = () => {
                 <li>XL</li>
                 <li>XS</li>
               </ol>
-
               <p className='title-menu-color'>Color</p>
               <ol className='menu-color'>
                 <li className='color-purple'></li>
@@ -155,19 +146,15 @@ const ProductDetails = () => {
                 <li className='color-gold'></li>
               </ol>
             </div>
-
             <div className='info-bts'>
-
               <div className="counter">
                 <button className="decrease" onClick={decrease}>-</button>
                 <span id="counter-value">{count}</span>
                 <button className="increase" onClick={increase}>+</button>
               </div>
-
               <button className='add-to-cart-bt'>Add To Cart</button>
               <button className='compare'>+ Compare</button>
             </div>
-
             <div className="sku-category-tags">
               <ol className="details-grid">
                 <li>
@@ -195,10 +182,11 @@ const ProductDetails = () => {
                   </span>
                 </li>
               </ol>
-            </div> 
-          </div>      
+            </div>
+          </div>
         </div>
       </div>
+      <hr />
     </div>
   );
 };

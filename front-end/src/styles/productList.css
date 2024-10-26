@@ -77,8 +77,8 @@
 }
 
 .product-image {
-  width: 100%;
-  height: auto;
+  width: 28.5rem;
+  max-height: 30.1rem;
   display: block;
 }
 
