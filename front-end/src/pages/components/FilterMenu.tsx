@@ -11,11 +11,11 @@ interface FilterMenuProps {
 
 const FilterMenu = ({ setItemsPerPage }: FilterMenuProps) => {
   const categories = ['Dining', 'Living', 'Bedroom'];
-  const itemsOptions = ['16', '20', '24', '28', '32'];
+  const itemsOptions = [16, 20, 24, 28, 32].map(String);
   const sortOptions = ['Ascending', 'Descending'];
 
   const [selectedCategory, setSelectedCategory] = useState<string>('Filter');
-  const [itemsPerPage, setItemsPerPageState] = useState<string>('16');
+  const [itemsPerPage, setItemsPerPageState] = useState<number>(16);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const handleCategoryChange = (category: string) => {
@@ -24,7 +24,8 @@ const FilterMenu = ({ setItemsPerPage }: FilterMenuProps) => {
   };
 
   const handleItemsPerPageChange = (value: string) => {
-    setItemsPerPageState(value); 
+    const numberValue = Number(value);
+    setItemsPerPageState(numberValue);
     setItemsPerPage(value);
     setOpenDropdown(null);
   };
@@ -47,7 +48,7 @@ const FilterMenu = ({ setItemsPerPage }: FilterMenuProps) => {
     ) {
       setOpenDropdown(null);
     }
-  };  
+  };
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -60,10 +61,10 @@ const FilterMenu = ({ setItemsPerPage }: FilterMenuProps) => {
     <div className="filter-menu-container">
       <div className="filter-menu">
         <div className="filter-icon" onClick={() => setOpenDropdown(openDropdown === 'category' ? null : 'category')} ref={categoryRef}>
-          <img 
-            src={filterIcon} 
-            alt="Filter" 
-            className="filter-icon-img" 
+          <img
+            src={filterIcon}
+            alt="Filter"
+            className="filter-icon-img"
           />
           <span>{selectedCategory}</span>
           {openDropdown === 'category' && (
@@ -72,8 +73,8 @@ const FilterMenu = ({ setItemsPerPage }: FilterMenuProps) => {
                 <label key={category} className="checkbox-label" onClick={() => handleCategoryChange(category)}>
                   <input
                     type="checkbox"
-                    checked={selectedCategory === category} 
-                    onChange={() => handleCategoryChange(category)} 
+                    checked={selectedCategory === category}
+                    onChange={() => handleCategoryChange(category)}
                   />
                   {category}
                 </label>
@@ -81,13 +82,11 @@ const FilterMenu = ({ setItemsPerPage }: FilterMenuProps) => {
             </div>
           )}
         </div>
-
         <div className="filter-display">
           <img className="mode-icon" src={modeIcon} alt="Mode Icon" />
           <img className="display-icon" src={displayIcon} alt="Display Icon" />
           <p className="filter-sidebar">Showing 1–{itemsPerPage} of 32 results</p>
         </div>
-
         <div className="show-options-container" ref={showOptionsRef}>
           <label htmlFor="items-per-page" className="show-label">Show</label>
           <div onClick={() => setOpenDropdown(openDropdown === 'show' ? null : 'show')}>
@@ -100,15 +99,14 @@ const FilterMenu = ({ setItemsPerPage }: FilterMenuProps) => {
               textColor="#000"
               hoverBgColor="#B88E2F"
               hoverTextColor="#FFF"
-              defaultSelected={itemsPerPage} 
+              defaultSelected={itemsPerPage.toString()}
               dropdownWidth="5.5rem"
               textAlign="center"
-              onChange={handleItemsPerPageChange} 
+              onChange={handleItemsPerPageChange}
               isOpen={openDropdown === 'show'}
             />
           </div>
         </div>
-
         <div className="sort-options" ref={sortOptionsRef}>
           <label htmlFor="sort-by" className="sort-by-label">Sort by</label>
           <div onClick={() => setOpenDropdown(openDropdown === 'sort' ? null : 'sort')}>

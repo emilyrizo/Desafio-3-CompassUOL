@@ -1,5 +1,5 @@
 footer {
-  max-width: 144rem;
+  max-width: 192rem;
   display: flex;
   margin: 0 auto;
   justify-content: center;
@@ -54,6 +54,11 @@ footer {
   font-size: 1.6rem;
   line-height: 2.4rem;
   font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.inner-ul li:hover {
+  color: #B88E2F;
 }
 
 .divider-footer {
@@ -100,4 +105,9 @@ footer {
   font-weight: 500;
   line-height: 2.1rem;
   border-bottom: .1rem solid #000;
+}
+
+#form-news button:active {
+  border-bottom: .1rem solid #8c6518;
+  color: #8c6518;
 }

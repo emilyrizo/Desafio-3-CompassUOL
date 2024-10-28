@@ -1,5 +1,5 @@
 .product-details-container {
-  width: 144rem;
+  max-width: 192rem;
   margin: 0 auto;
 }
 
@@ -131,8 +131,6 @@
 .tag-discount {
   background-color: #E97171;   
 }
-
-
 
 
 /* ------------------------- */
@@ -296,6 +294,21 @@
   margin-right: 1rem;
 }
 
+ .add-to-cart-bt:hover, .compare:hover {
+  border: .2rem solid #B88E2F;
+  color: #B88E2F;
+  font-weight: 500;
+}
+
+.counter:hover {
+  border: .2rem solid #B88E2F;
+  font-weight: 500;
+}
+
+.decrease:hover, .increase:hover {
+  color: #B88E2F;
+}
+
 .counter span, .counter button {
   font-size: 1.6rem;
   font-weight: 500;
@@ -309,6 +322,7 @@
 
 .decrease {
   padding-left: 1.2rem;
+  font-size: 2rem !important;
 }
 
 .increase {
@@ -347,17 +361,23 @@
   margin-bottom: 1.2rem;
 }
 
-.social-icons {
+.social-icons-span {
   display: flex;  
   align-items: center;
 }
 
-.social-icons img {
+.social-icons {
   margin-right: 2.5rem;
+  transition: transform 0.3s ease;
+}
+
+.social-icons:hover {
+  transform: scale(1.08); 
 }
 
 .product-details-container hr {
-  margin-top: 5.4rem;
+  max-width: 144rem;
+  margin: 5.4rem auto 0;
   border: .1rem solid #D9D9D9; 
   width: 100%;
 }

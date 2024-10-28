@@ -1,8 +1,158 @@
-.banner-home, .banner-shop{
-  max-width: 144rem;
+.banner-home {
+  max-width: 192rem;
+  height: 66.7rem;
   margin: 0 auto;
+  position: relative;
+  background-image: url('../assets/images/banner/banner.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
-.banner-home-img, .banner-shop-img {
-  width: 100%;
+.banner-overlay {
+  position: absolute;
+  bottom: -42.3rem;
+  right: 6rem;
+  width: 85.7rem;
+  height: 42.3rem;
+  padding: 4.2rem 6.2rem 4.2rem 6rem;
+  background-color: #FFF3E3;
+  border-radius: 1rem 1rem 0 0;
+  animation: slideUp 1s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    bottom: -42.3rem;   }
+  to {
+    bottom: 0;
+  }
+}
+
+.banner-overlay h1 {
+  color: #B88E2F;
+  font-size: 4.6rem;  
+  font-weight: 700;
+}
+
+.banner-overlay h2 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  padding-top: 2.4rem;
+  color: #333;
+}
+
+
+/* _______________________ */
+
+
+
+.banner-shop {
+  max-width: 192rem;
+  margin: 0 auto 1.2rem;
+  position: relative;
+  height: 43.7rem;
+  background: url('../assets/images/banner/banner-shop.png') no-repeat center center;
+  background-size: cover;
+}
+
+.banner-shop-content {  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #000; 
+}
+.banner-shop-content h1 {
+  font-size: 5.2rem;
+  font-weight: 500;
+  line-height: 7.6rem;
+}
+
+.text-banner-shop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding-left: .3rem;
+}
+
+.banner-shop-li {
+  display: inline;  
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2.8rem;
+  color: #000;
+  text-decoration: none;
+}
+
+.banner-shop-li:last-child {
+  font-weight: 300;
+}
+
+.arrow-banner-shop img {
+  margin-top: .7rem;
+  height: 1.5rem;
+}
+
+
+/* ---------------------------------------------- */
+
+
+@media (max-width: 1440px) {
+  .banner-home {
+    max-width: 144rem;
+    height: 50rem;
+  }
+
+  .banner-overlay {
+    right: 5rem;
+    width: 64.3rem;
+    height: 31.7rem;
+    padding: 3.7rem 5rem;
+  }
+
+  .banner-overlay h1 {
+    color: #B88E2F;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 4.8rem;
+  }
+  
+  .banner-overlay h2 {
+    padding-top: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  @keyframes slideUp {
+    from {
+      bottom: -31.7rem;   }
+    to {
+      bottom: 0;
+    }
+  }
+  
+
+  /* -------------------------- */
+
+
+
+  .banner-shop {
+    max-width: 144rem;
+    height: 31.7rem;
+  }
+
+  .banner-shop-content h1 {
+    font-size: 4.8rem;
+  }
+
+  .banner-shop-li {
+    font-size: 1.6rem;
+  }
+
+  .arrow-banner-shop img {
+    height: 1.4rem;
+  }
 }

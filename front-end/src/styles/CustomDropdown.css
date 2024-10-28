@@ -28,11 +28,11 @@
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  background-color: #F9F1E7; /* Cor de fundo do dropdown */
+  background-color: #F9F1E7;
   padding: 1rem;
   border-radius: 0.5rem;
-  position: absolute; /* Para posicionamento */
-  z-index: 10; /* Para que fique acima de outros elementos */
+  position: absolute;
+  z-index: 10;
 }
 
 .checkbox-label {
@@ -42,6 +42,6 @@
 }
 
 .checkbox-label input {
-  margin-right: 0.5rem; /* Espaçamento entre o checkbox e o texto */
+  margin-right: 0.5rem;
 }
 

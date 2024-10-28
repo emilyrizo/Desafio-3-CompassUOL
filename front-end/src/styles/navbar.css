@@ -1,6 +1,6 @@
 nav {
   margin: 0 auto;
-  max-width: 144rem;
+  max-width: 192rem;
   display: flex;
 }
 
@@ -23,18 +23,66 @@ nav {
   gap: 4.8rem;
 }
 
-.menu-list a {
+.nav-link {
+  font-size: 1.6rem;
+  font-weight: 500;
   line-height: 2.4rem;
+  position: relative;
+  padding-bottom: .3rem;
+  transition: font-size 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -0.4rem;
+  width: 0;
+  height: 0.2rem;
+  background-color: #B88E2F;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: calc(100% + 1rem);
 }
 
 .nav-actions {
   display: flex;
   gap: 4.8rem;
   margin-right: 10.2rem;
-  height: 2.5rem;
 }
 
 .login-icon {
   height: 2.2rem;
-  margin: auto;
+  width: auto;
+}
+
+.search-icon, .favorites-icon, .cart-icon {
+  height: 2.4rem;
+  width: auto;
+}
+
+.default-icon {
+  transition: opacity 0.3s ease;
+}
+
+.icon-link {
+  position: relative;
+}
+
+.default-icon {
+  display: block;
+}
+
+.gold-icon {
+  display: none;
+}
+
+.icon-link:hover .default-icon {
+  display: none;
+}
+
+.icon-link:hover .gold-icon {
+  display: block;
 }

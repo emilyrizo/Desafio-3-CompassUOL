@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import ProductDetails from "./components/ProductDetails";
 import RelatedProducts from "./components/RelatedProducts";
 import axiosInstance from '../services/axios.Config';
-import Description from './components/Description';
+
 
 const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -24,7 +24,6 @@ const ProductPage = () => {
     <div className="product-page">
       <Navbar />
       <ProductDetails />
-      <Description />
       <RelatedProducts currentCategoryId={currentCategoryId} />    
       <Footer />
     </div>

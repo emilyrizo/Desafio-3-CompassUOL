@@ -51,25 +51,24 @@ const RelatedProducts = ({ currentCategoryId }: RelatedProductsProps) => {
 
         const combinedProducts = [...sameCategoryProducts, ...additionalProducts];
         setRelatedProducts(combinedProducts);
-        setDisplayedProducts(combinedProducts.slice(0, 4)); // Mostrar os 4 primeiros inicialmente
+        setDisplayedProducts(combinedProducts.slice(0, 4));
       })
       .catch((error) => {
-        console.error('Erro ao buscar produtos relacionados:', error);
+        console.error('Error fetching related products.', error);
       });
   }, [currentCategoryId]);
 
   const handleShowMore = () => {
     if (showMoreCount === 1) {
-      navigate('/shop'); // Redireciona para a página /shop na segunda vez
+      navigate('/shop');
     } else {
       setShowMoreCount(showMoreCount + 1);
-      // Exibir mais 4 produtos, se disponíveis
       const nextProducts = relatedProducts.slice(0, displayedProducts.length + 4);
       setDisplayedProducts(nextProducts);
     }
   };
 
-  if (displayedProducts.length === 0) return <div>Nenhum produto relacionado encontrado.</div>;
+  if (displayedProducts.length === 0) return <div>No related products found.</div>;
 
   return (
     <div className="product-container related-container">
@@ -136,89 +135,3 @@ const RelatedProducts = ({ currentCategoryId }: RelatedProductsProps) => {
 };
 
 export default RelatedProducts;
-
-
-
-{/* <button onClick={handleShowMore}>Show More</button> */}
-
-
-// import { useEffect, useState } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import axiosInstance from '../../services/axios.Config';
-
-// interface Product {
-//   id: number;
-//   name: string;
-//   category_id: number;
-//   price: string;
-//   discount_price: string | null;
-//   image_link: string;
-// }
-
-// interface RelatedProductsProps {
-//   currentCategoryId: number | null;
-// }
-
-// const RelatedProducts = ({ currentCategoryId }: RelatedProductsProps) => {
-//   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-//   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
-//   const [showMoreCount, setShowMoreCount] = useState(0);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     if (currentCategoryId === null) return;
-//     axiosInstance.get('/products')
-//       .then((response) => {
-//         const products = response.data;
-        
-
-//         const sameCategoryProducts = products.filter(
-//           (product: Product) => product.category_id === currentCategoryId
-//         );
-
-//         const additionalProducts = products.filter(
-//           (product: Product) => product.category_id !== currentCategoryId
-//         );
-
-//         const combinedProducts = [...sameCategoryProducts, ...additionalProducts];
-//         setRelatedProducts(combinedProducts);
-//         setDisplayedProducts(combinedProducts.slice(0, 4)); // Mostrar os 4 primeiros inicialmente
-//       })
-//       .catch((error) => {
-//         console.error('Erro ao buscar produtos relacionados:', error);
-//       });
-//   }, [currentCategoryId]);
-
-//   const handleShowMore = () => {
-//     if (showMoreCount === 1) {
-//       navigate('/shop'); // Redireciona para a página /shop na segunda vez
-//     } else {
-//       setShowMoreCount(showMoreCount + 1);
-//       // Exibir mais 4 produtos, se disponíveis
-//       const nextProducts = relatedProducts.slice(0, displayedProducts.length + 4);
-//       setDisplayedProducts(nextProducts);
-//     }
-//   };
-
-//   if (displayedProducts.length === 0) return <div>Nenhum produto relacionado encontrado.</div>;
-
-//   return (
-//     <div className="related-products">
-//       <h2>Produtos Relacionados</h2>
-//       <div className="related-products-list">
-//         {displayedProducts.map((product) => (
-//           <div key={product.id} className="related-product">
-//             <Link to={`/product/${product.id}`}>
-//               <img src={product.image_link} alt={product.name} />
-//               <h3>{product.name}</h3>
-//               <p>Preço: {product.discount_price || product.price}</p>
-//             </Link>
-//           </div>
-//         ))}
-//       </div>
-//       <button onClick={handleShowMore}>Show More</button>
-//     </div>
-//   );
-// };
-
-// export default RelatedProducts;

@@ -8,6 +8,7 @@ import fb from '../../assets/images/product-page/facebook.svg';
 import linkedin from '../../assets/images/product-page/linkedin.svg';
 import twitter from '../../assets/images/product-page/twitter.svg';
 import '../../styles/productDetails.css';
+import Description from './Description';
 
 interface Product {
   id: number;
@@ -40,29 +41,25 @@ const ProductDetails = () => {
   const [mainImage, setMainImage] = useState<string>('');
 
   const increase = () => setCount(count + 1);
-
-  const decrease = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  };
+  const decrease = () => count > 1 && setCount(count - 1);
 
   useEffect(() => {
-    axiosInstance.get(`/products/${id}`)
-      .then((response) => {
-        const productData = response.data;
+    const fetchProductData = async () => {
+      try {
+        const productResponse = await axiosInstance.get(`/products/${id}`);
+        const productData = productResponse.data;
         setProduct(productData);
         setMainImage(productData.image_link);
-        return axiosInstance.get(`/categories/${productData.category_id}`);
-      })
-      .then((categoryResponse) => {
+
+        const categoryResponse = await axiosInstance.get(`/categories/${productData.category_id}`);
         setCategory(categoryResponse.data);
-        setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Erro ao buscar o produto ou a categoria:', error);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+    fetchProductData();
   }, [id]);
 
   if (loading) {
@@ -75,17 +72,21 @@ const ProductDetails = () => {
 
   const otherImages = product.other_images_link ? product.other_images_link.split(',') : [];
 
+  const formatPrice = (price: string) =>
+    `Rp ${Number(price).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
+
   return (
     <div className="product-details-container">
       <div className='product-details'>
         <div className='product-path'>
           <ol className="inner-ol">
-            <li><Link to="/" className='home-li'>Home</Link><img src={arrow} alt="" /></li>
-            <li><Link to="/shop" className='shop-li'>Shop</Link><img src={arrow} alt="" className='arrow-shop'/></li>
+            <li><Link to="/" className='home-li'>Home</Link><img src={arrow} alt="Arrow" /></li>
+            <li><Link to="/shop" className='shop-li'>Shop</Link><img src={arrow} alt="Arrow" className='arrow-shop'/></li>
             <li className='name-li'>{product.name}</li>
           </ol>
         </div>
       </div>
+
       <div className='product-info-container'>
         <div className="product-info">
           <ol className='product-info-imgs'>
@@ -107,22 +108,17 @@ const ProductDetails = () => {
               </li>
             </div>
           </ol>
+
           <div className="product-info-content">
             <h1 className='prod-name'>{product.name}</h1>
             <div className="product-pricing">
               {product.discount_price ? (
                 <>
-                  <span className="discount-price-info">
-                    {`Rp ${Number(product.discount_price).toFixed(2).replace('.', '.').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}
-                  </span>
-                  <span className="original-price-info">
-                    {`Rp ${Number(product.price).toFixed(2).replace('.', '.').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}
-                  </span>
+                  <span className="discount-price-info">{formatPrice(product.discount_price)}</span>
+                  <span className="original-price-info">{formatPrice(product.price)}</span>
                 </>
               ) : (
-                <span className="regular-price-info">
-                  {`Rp ${Number(product.price).toFixed(2).replace('.', '.').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}
-                </span>
+                <span className="regular-price-info">{formatPrice(product.price)}</span>
               )}
             </div>
             <div className='rating'>
@@ -157,28 +153,16 @@ const ProductDetails = () => {
             </div>
             <div className="sku-category-tags">
               <ol className="details-grid">
-                <li>
-                  <span className="detail-name">SKU</span>
-                  <span className="colon">:</span>
-                  <span>{product.sku}</span>
-                </li>
-                <li>
-                  <span className="detail-name">Category</span>
-                  <span className="colon">:</span>
-                  <span>{category ? category.name : 'Carregando...'}</span>
-                </li>
-                <li>
-                  <span className="detail-name">Tags</span>
-                  <span className="colon">:</span>
-                  <span>Sofa, Chair, Home, Shop</span>
-                </li>
+                <li><span className="detail-name">SKU</span><span className="colon">:</span><span>{product.sku}</span></li>
+                <li><span className="detail-name">Category</span><span className="colon">:</span><span>{category ? category.name : 'Carregando...'}</span></li>
+                <li><span className="detail-name">Tags</span><span className="colon">:</span><span>Sofa, Chair, Home, Shop</span></li>
                 <li>
                   <span className="detail-name">Share</span>
                   <span className="colon">:</span>
-                  <span className="social-icons">
-                    <img src={fb} alt="Facebook" />
-                    <img src={linkedin} alt="LinkedIn" />
-                    <img src={twitter} alt="Twitter" />
+                  <span className="social-icons-span">
+                    <Link to="#" className="social-icons"><img src={fb} alt="Facebook" /></Link>
+                    <Link to="#" className="social-icons"><img src={linkedin} alt="LinkedIn" /></Link>
+                    <Link to="#" className="social-icons"><img src={twitter} alt="Twitter" /></Link>
                   </span>
                 </li>
               </ol>
@@ -187,6 +171,7 @@ const ProductDetails = () => {
         </div>
       </div>
       <hr />
+      <Description large_description={product.large_description} />
     </div>
   );
 };

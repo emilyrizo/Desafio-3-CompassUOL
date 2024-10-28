@@ -33,8 +33,8 @@ const Footer = () => {
       
           <div className="footer-section news-footer">
             <h3>Newsletter</h3>
-            <form id='form-news' action="" method="post">
-              <label className='email-input' htmlFor='email'>
+            <form id='form-news' action="" method="">
+              <label className='email-input' htmlFor=''>
                 <input type="email" id="email" name="email" placeholder="Enter Your Email Address" required />
               </label>
               <button type="submit">SUBSCRIBE</button>
