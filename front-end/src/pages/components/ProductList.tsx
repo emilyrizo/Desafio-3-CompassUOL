@@ -26,9 +26,10 @@ interface Product {
 interface ProductListProps {
   itemsPerPage: number;
   currentPage: number;
+  sortOrder: string;
 }
 
-const ProductList = ({ itemsPerPage, currentPage }: ProductListProps) => {
+const ProductList = ({ itemsPerPage, currentPage, sortOrder }: ProductListProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const location = useLocation();
@@ -41,7 +42,7 @@ const ProductList = ({ itemsPerPage, currentPage }: ProductListProps) => {
         setProducts(response.data);
         setLoading(false);
       } catch (error) {
-        console.error('Erro ao buscar produtos:', error);
+        console.error('Error fetching products:', error);
         setLoading(false);
       }
     };
@@ -52,7 +53,10 @@ const ProductList = ({ itemsPerPage, currentPage }: ProductListProps) => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  if (!products) {
+    return <div>Product not found.</div>;
+  }
+  
   const searchParams = new URLSearchParams(location.search);
   const selectedCategoryId = searchParams.get('category');
 
@@ -60,12 +64,19 @@ const ProductList = ({ itemsPerPage, currentPage }: ProductListProps) => {
     ? products.filter((product) => product.category_id === Number(selectedCategoryId))
     : products;
 
+  const sortedProducts = filteredProducts.sort((a, b) => {
+    const priceA = parseFloat(a.discount_price || a.price);
+    const priceB = parseFloat(b.discount_price || b.price);
+    return sortOrder === 'Ascending' ? priceA - priceB : priceB - priceA;
+  });
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const displayedProducts = filteredProducts.slice(startIndex, endIndex);
+  const displayedProducts = sortedProducts.slice(startIndex, endIndex);
+
   while (displayedProducts.length < itemsPerPage) {
-    displayedProducts.push(...filteredProducts.slice(0, itemsPerPage - displayedProducts.length));
+    displayedProducts.push(...sortedProducts.slice(0, itemsPerPage - displayedProducts.length));
   }
 
   return (

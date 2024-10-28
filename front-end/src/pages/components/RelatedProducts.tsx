@@ -40,15 +40,12 @@ const RelatedProducts = ({ currentCategoryId }: RelatedProductsProps) => {
       .then((response) => {
         const products = response.data;
         
-
         const sameCategoryProducts = products.filter(
           (product: Product) => product.category_id === currentCategoryId
         );
-
         const additionalProducts = products.filter(
           (product: Product) => product.category_id !== currentCategoryId
         );
-
         const combinedProducts = [...sameCategoryProducts, ...additionalProducts];
         setRelatedProducts(combinedProducts);
         setDisplayedProducts(combinedProducts.slice(0, 4));
@@ -60,7 +57,7 @@ const RelatedProducts = ({ currentCategoryId }: RelatedProductsProps) => {
 
   const handleShowMore = () => {
     if (showMoreCount === 1) {
-      navigate('/shop');
+      navigate(`/shop?category=${currentCategoryId}`);
     } else {
       setShowMoreCount(showMoreCount + 1);
       const nextProducts = relatedProducts.slice(0, displayedProducts.length + 4);
@@ -75,7 +72,7 @@ const RelatedProducts = ({ currentCategoryId }: RelatedProductsProps) => {
       <h1 className='related-title'>Related Products</h1>
       <ul className="product-list">
         {displayedProducts.map((product) => (
-          <li className="product-card" key={product.id}> 
+          <li className="product-card" key={product.id}>
             <div className="product-image-wrapper">
               <a href="">
                 <img src={product.image_link} alt={product.name} className="product-image" />
@@ -85,13 +82,11 @@ const RelatedProducts = ({ currentCategoryId }: RelatedProductsProps) => {
                 )}
               </a>
             </div>
-
             <div className="card-description">
               <a href="">
                 <h2 className="product-name">{product.name}</h2>
                 <p className="product-description">{product.description}</p>
               </a>
-              
               <div className="product-pricing">
                 {product.discount_price ? (
                   <>
@@ -109,7 +104,6 @@ const RelatedProducts = ({ currentCategoryId }: RelatedProductsProps) => {
                 )}
               </div>
             </div>
-
             <div className="product-overlay">
               <Link to={`/product/${product.id}`}>
                 <button className="see-details-btn">See Details</button>
@@ -129,7 +123,7 @@ const RelatedProducts = ({ currentCategoryId }: RelatedProductsProps) => {
           </li>
         ))}
       </ul>
-        <button className='show-more-products-bt' onClick={handleShowMore}>Show More</button>
+      <button className='show-more-products-bt' onClick={handleShowMore}>Show More</button>
     </div>
   );
 };

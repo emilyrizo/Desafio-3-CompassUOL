@@ -20,7 +20,7 @@ const Categories = () => {
         setCategories(orderedCategories);
       })
       .catch((error) => {
-        console.error('Erro ao buscar categorias:', error);
+        console.error("Error fetching categories:", error);
       });
   }, []);
 

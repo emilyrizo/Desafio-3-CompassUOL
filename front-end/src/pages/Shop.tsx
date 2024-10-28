@@ -10,6 +10,7 @@ import Pagination from "./components/Pagination";
 const Shop = () => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(16);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [sortOrder, setSortOrder] = useState<string>('Default');
 
   const totalPages = Math.ceil(100 / itemsPerPage);
 
@@ -25,8 +26,8 @@ const Shop = () => {
     <div className="home-container">
       <Navbar />
       <BannerShop />
-      <FilterMenu setItemsPerPage={handleItemsPerPageChange} /> 
-      <ProductList itemsPerPage={itemsPerPage} currentPage={currentPage} />
+      <FilterMenu setItemsPerPage={handleItemsPerPageChange} setSortOrder={setSortOrder} />
+      <ProductList itemsPerPage={itemsPerPage} currentPage={currentPage} sortOrder={sortOrder} /> 
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

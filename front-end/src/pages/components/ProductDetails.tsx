@@ -54,7 +54,7 @@ const ProductDetails = () => {
         const categoryResponse = await axiosInstance.get(`/categories/${productData.category_id}`);
         setCategory(categoryResponse.data);
       } catch (error) {
-        console.error('Erro ao buscar o produto ou a categoria:', error);
+        console.error('Error fetching the product or category:', error);
       } finally {
         setLoading(false);
       }
@@ -67,7 +67,7 @@ const ProductDetails = () => {
   }
 
   if (!product) {
-    return <div>Produto não encontrado.</div>;
+    return <div>Product not found.</div>;
   }
 
   const otherImages = product.other_images_link ? product.other_images_link.split(',') : [];

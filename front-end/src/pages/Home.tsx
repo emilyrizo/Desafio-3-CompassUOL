@@ -10,6 +10,7 @@ import "../styles/home.css";
 
 const Home = () => {
   const [itemsPerPage] = useState<number>(8);
+  const [sortOrder] = useState<string>('Default'); 
 
   return (
     <div className="home-container">
@@ -18,7 +19,7 @@ const Home = () => {
       <Categories />
       <div className="our-products">
         <h1 className="product-title">Our Products</h1>
-        <ProductList itemsPerPage={itemsPerPage} currentPage={1} />
+        <ProductList itemsPerPage={itemsPerPage} currentPage={1} sortOrder={sortOrder} />
         <Link className="show-more-products-bt" to="/shop">
           Show More
         </Link>
@@ -30,4 +31,3 @@ const Home = () => {
 };
 
 export default Home;
-

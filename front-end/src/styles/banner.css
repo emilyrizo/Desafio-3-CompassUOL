@@ -15,7 +15,7 @@
   right: 6rem;
   width: 85.7rem;
   height: 42.3rem;
-  padding: 4.2rem 6.2rem 4.2rem 6rem;
+  padding: 4.2rem 6.2rem 4.2rem 7.5rem;
   background-color: #FFF3E3;
   border-radius: 1rem 1rem 0 0;
   animation: slideUp 1s ease-out forwards;
@@ -108,9 +108,9 @@
 
   .banner-overlay {
     right: 5rem;
-    width: 64.3rem;
+    width: 64rem;
     height: 31.7rem;
-    padding: 3.7rem 5rem;
+    padding: 3.7rem 5.5rem;
   }
 
   .banner-overlay h1 {
